@@ -1,0 +1,88 @@
+class Boom
+!!!134477.java!!!	Boom(in mix : int, in miy : int, in max : int, in may : int, in prox : int, in proy : int)
+
+try {
+			boomimg = Image.createImage("/boom.png");
+		}catch (Exception e) {
+  		System.out.println("error: "+e);
+		}
+
+minx = mix;
+miny = miy;
+maxx = max;
+maxy = may;
+
+startx = (mix + (prox * ((max - mix) / 100)));
+starty = (miy + (proy * ((may - miy) / 100)));
+
+boomspr = new Sprite(boomimg,(boomimg.getWidth()/frames), boomimg.getHeight());
+boompos = new Posietie();
+
+
+Regenerate();
+
+!!!134605.java!!!	setHurt() : void
+if (!updatetel) {
+updatetel = true;
+hurt = true;
+alive -=10;
+anderesequence = true;
+}
+!!!134733.java!!!	getAlive() : boolean
+if (alive > 0){
+return true;
+}
+return false;
+!!!134861.java!!!	getHurt() : boolean
+return hurt;
+!!!134989.java!!!	Regenerate() : void
+ 
+
+//set bij object score het leven min 1
+boompos.x = startx; //get width kan allen in een canvas een paint etc.
+boompos.y = starty;
+
+boomspr.setPosition(boompos.x, boompos.y);
+alive = 30;
+
+updatenodig = 0;
+boomspr.setFrameSequence(stasequence);
+!!!135117.java!!!	animatieKeuze() : void
+
+	
+	if (anderesequence) {
+	if((alive >= 0)  && (boomspr.getFrameSequenceLength() != doodsequence.length )) {boomspr.setFrameSequence(doodsequence);
+	}
+	else {
+		  if ((alive <= 0) && (!hurt) &&  (boomspr.getFrameSequenceLength() != omsequence.length )) {boomspr.setFrameSequence(omsequence);}
+			else {
+				if ((alive > 0) &&  (!hurt) && (boomspr.getFrameSequenceLength() != stasequence.length ))  {boomspr.setFrameSequence(stasequence);}
+			}	
+			
+	}
+	anderesequence = false;
+
+}
+
+
+	
+
+
+!!!135245.java!!!	Turn() : void
+
+
+
+if (updatetel) {updatenodig++;}
+
+if (updatenodig >= 20) {
+hurt = false;
+updatetel = false;
+updatenodig = 0;
+anderesequence = true;
+}
+
+
+animatieKeuze();
+boomspr.nextFrame();
+!!!135373.java!!!	GetSprite() : Sprite
+    return this.boomspr;

@@ -1,0 +1,13 @@
+window_sizes 1440 825 337 1097 626 120
+diagrams
+  active  classdiagram_ref 128205 // daigramm
+    1097 626 100 4 0 0
+end
+show_stereotypes
+selected artifact_ref 128589 // BadGuy
+open
+  classview_ref 128205 // src
+  deploymentview_ref 128205 // src
+  classview_ref 128333 // unknown
+end
+end

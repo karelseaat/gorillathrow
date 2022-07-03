@@ -1,0 +1,26 @@
+class Aats
+!!!130765.java!!!	Aats()
+  mygamecanvas = new MyGameCanvas(); // nieuw MyGameCanvas aanmaken. die in de variabele met de naam : mygamecanvas gaat. (dit deden we een stap eerder hierboven ook aal maar dit is gewoon nodig)
+  myuitlegcanvas = new UitlegCanvas();
+  theDisplay =  Display.getDisplay(this);
+
+	keuzemenu.append("Start Game", null);
+	keuzemenu.append("Help", null);
+	keuzemenu.append("Exit", null);
+	keuzemenu.setCommandListener(this);
+!!!130893.java!!!	startApp() : void
+ // het starten van de applicatie
+	
+  theDisplay.setCurrent(keuzemenu);
+!!!131021.java!!!	commandAction(inout cmd : Command, inout d : Displayable) : void
+ 	if(d == keuzemenu){
+ 		if(keuzemenu.getSelectedIndex() == 0) {theDisplay.setCurrent(mygamecanvas);}
+ 		if(keuzemenu.getSelectedIndex() == 1) {theDisplay.setCurrent(myuitlegcanvas);}
+		if(keuzemenu.getSelectedIndex() == 2) {exitMIDlet();}
+		
+		}
+!!!131277.java!!!	destroyApp(inout unconditional : boolean) : void
+ 
+!!!131405.java!!!	exitMIDlet() : void
+    destroyApp(false);
+    notifyDestroyed();

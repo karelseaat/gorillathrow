@@ -1,0 +1,29 @@
+class UitlegCanvas
+!!!138957.java!!!	UitlegCanvas()
+
+
+for (int i = 1; i <= 4; i++) {
+try {
+uitleg[(i - 1)] =  Image.createImage("/intro" + (i) + ".png");
+	System.out.println("/intro" + (i) + ".png");
+} catch (Exception e) {
+  		System.out.println("error: "+e);
+}
+}
+!!!139085.java!!!	paint(inout g : Graphics) : void
+	
+	g.setColor(255, 100, 255); //kleurtje aan het eerstvolgende dat word getekend, licht paarse achtergrond met 255,200,255 (RGB)
+	g.fillRect(0, 0, getWidth(), getHeight()); //teken een blak van (rechts,boven,maximale breedte, maximale hoogte) = exact het scherm.
+	
+	if (i < 0) {i = 3;}
+	if (i > 3) {i = 0;}
+	g.drawImage(uitleg[i], 0, 0, g.TOP| g.LEFT);
+
+	
+ 
+	repaint(); //Om weer terug te gaan naar : public void paint(Graphics g). dit maakt de de eerst lus.
+!!!139213.java!!!	keyPressed(in code : int) : void
+ //de functie getAndProcessInput
+  int action = getGameAction(code);
+  if (action == UP) i--;
+  if (action == DOWN) i++;

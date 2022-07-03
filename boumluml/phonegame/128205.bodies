@@ -1,0 +1,183 @@
+class Aap
+!!!128205.java!!!	Aap(in mix : int, in miy : int, in max : int, in may : int, in prox : int, in proy : int)
+
+
+try {
+			aapimg = Image.createImage("/aap.png");
+		}catch (Exception e) {
+  		System.out.println("error: "+e);
+		}
+
+
+
+
+	
+
+
+
+
+
+
+//System.out.println(aapimg.getHeight() + " " + aapimg.getWidth());
+
+
+aapspr = new Sprite(aapimg,(aapimg.getWidth()/frames), aapimg.getHeight());
+aappos = new Posietie();
+aapvel = new Vellocity();
+
+minx = mix;
+miny = miy;
+maxx = max;
+maxy = may;
+startx = (mix + (prox * ((max - mix) / 100)));
+starty = (mix + (proy * ((may - miy) / 100)));
+
+Regenerate();
+!!!128333.java!!!	getXspeed() : int
+return aapvel.x;	
+!!!128461.java!!!	getYspeed() : int
+return aapvel.y;	
+!!!128589.java!!!	getAlive() : boolean
+return alive;
+!!!128717.java!!!	setUpdate() : void
+updatenodig = 30;
+!!!128845.java!!!	setGooi() : void
+updatetel = true;	
+trowing = true;
+anderesequence = true;
+!!!128973.java!!!	getGooi() : boolean
+return trowing;	
+!!!129101.java!!!	setDead() : void
+updatetel = true;
+alive = false;
+anderesequence = true;
+!!!129229.java!!!	getXpos() : int
+return aappos.x;
+!!!129357.java!!!	getYpos() : int
+return aappos.y;
+!!!129485.java!!!	Omhoog() : void
+
+aapvel.y--;	
+
+     	
+!!!129613.java!!!	Rechts() : void
+
+aapvel.x++;	
+
+
+!!!129741.java!!!	Omlaag() : void
+
+aapvel.y++;
+
+ 
+!!!129869.java!!!	Links() : void
+
+
+aapvel.x--;	
+
+
+!!!129997.java!!!	calcMovement() : void
+	
+
+
+if (i > aapvel.all + 1 ) {
+if (aapvel.x > 0) {aapvel.x--; }
+if (aapvel.x < 0) {aapvel.x++; }
+if (aapvel.y > 0) {aapvel.y--; }
+if (aapvel.y < 0) {aapvel.y++; }
+i = 0;
+}
+
+
+
+if (aapvel.x < 0) {tempx = aapvel.x * -1;}
+else {tempx  = aapvel.x;}
+if (aapvel.y < 0) {tempy = aapvel.y * -1;}
+else {tempy = aapvel.y;}
+
+aapvel.all = (tempx  + tempy);
+
+if (aapvel.all > 0 )  {moving =  true;}
+else {moving = false;anderesequence = true;}
+
+aapvel.all = (aapvel.all/4);
+i++;
+
+
+!!!130125.java!!!	Turn() : void
+
+
+
+if (updatetel) {updatenodig++;}
+
+if (updatenodig >= 15) {
+	if (!alive) {Regenerate();}
+	if (trowing) {trowing = false; }
+	
+
+updatenodig = 0;
+
+}
+
+animatieKeuze(); 
+if (alive) {calcMovement();} 
+MoveIt(); 
+!!!130253.java!!!	animatieKeuze() : void
+
+//System.out.println(alive + " " + moving);
+
+
+
+	if (anderesequence) {
+	if((!alive)&& (aapspr.getFrameSequenceLength() != doodsequence.length )) {
+		aapspr.setFrameSequence(doodsequence);
+	}
+	else {
+		if  (trowing)   {
+					aapspr.setFrameSequence(gooisequence);
+				}
+			
+			  else {
+			if ((!moving) && (alive)) {aapspr.setFrameSequence(stasequence);}
+				
+			}
+	}
+	anderesequence = false;
+}
+
+if ((alive) && (moving) && (!trowing) && (aapspr.getFrameSequenceLength() != beweegsequence.length)) {aapspr.setFrameSequence(beweegsequence);}
+
+
+
+!!!130381.java!!!	GetSprite() : Sprite
+    return this.aapspr;
+!!!130509.java!!!	MoveIt() : void
+
+//System.out.println(maxx);
+
+aappos.x = aappos.x + aapvel.x;
+aappos.y = aappos.y + aapvel.y;
+
+if (aappos.x < minx) {aappos.x = aappos.x - aapvel.x;aapvel.x=0;}
+if (aappos.y < miny) {aappos.y = aappos.y - aapvel.y;aapvel.y=0;}
+if (aappos.x > maxx) {aappos.x = aappos.x - aapvel.x;aapvel.x=0;}
+if (aappos.y > maxy) {aappos.y = aappos.y - aapvel.y;aapvel.y=0;}
+
+aapspr.setPosition(aappos.x, aappos.y);
+
+aapspr.nextFrame();	
+
+!!!130637.java!!!	Regenerate() : void
+ 
+
+
+aappos.x = startx; 
+aappos.y = starty;
+aapvel.x = 0;
+aapvel.y = 0;
+aapspr.setFrameSequence(stasequence);
+aapspr.setPosition(aappos.x, aappos.y);
+alive = true;
+updatetel = false;
+
+

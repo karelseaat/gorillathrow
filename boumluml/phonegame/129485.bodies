@@ -1,0 +1,228 @@
+class BadGuy
+!!!132173.java!!!	BadGuy(in mix : int, in miy : int, in max : int, in may : int, in leven : int)
+
+if (leven <= 10) {
+	try {
+		guyimg = Image.createImage("/man.png");
+		}catch (Exception e) {
+  	System.out.println("error: "+e);
+		}
+}
+else {
+	if ((leven <= 20) && (leven >= 10)) {
+		try {
+			guyimg = Image.createImage("/man2.png");
+		}catch (Exception e) {
+  		System.out.println("error: "+e);
+		}
+	}
+	else {	
+		if (leven >= 30) {
+		try {
+			guyimg = Image.createImage("/man3.png");
+		}catch (Exception e) {
+  		System.out.println("error: "+e);
+		}
+	}
+	
+	}
+}
+	
+
+guyspr = new Sprite(guyimg,(guyimg.getWidth()/frames), guyimg.getHeight());
+guypos = new Posietie();
+guyvel = new Vellocity();
+willekeur = new RandomNumber();
+
+minx = mix;
+miny = miy;
+maxx = max;
+maxy = may;
+startx = mix;
+starty = willekeur.getRandom(maxy);
+beginleven = leven;
+
+Regenerate();
+!!!132301.java!!!	setZagen() : void
+	updatetel = true;
+	sawing = true;
+  anderesequence = true;
+!!!132429.java!!!	getAlive() : int
+return alive;
+!!!132557.java!!!	setUpdate() : void
+updatenodig = 30;
+!!!132685.java!!!	setHurt() : void
+updatetel = true;
+alive -=10;
+anderesequence = true;
+ai = 5;
+!!!132813.java!!!	getHurt() : boolean
+if (updatetel) {return false;}
+else {return true;}
+!!!132941.java!!!	AiZero() : void
+if (aitel >= 3){
+guyvel.x = 3;
+aitel = 0;
+}
+if ((guypos.x + 5) > maxx) {ai = 4;}
+!!!133069.java!!!	AiOne() : void
+if (aitel >= 10){
+guyvel.x = 4;
+if (aismart) {guyvel.y = -4;aismart = false;}
+else {guyvel.y = 4;aismart = true;}
+aitel = 0;
+
+if ((guypos.x + 5) > maxx) {ai = 4;}
+
+}
+
+!!!133197.java!!!	AiTwo() : void
+
+if (aitel >= 10){
+guyvel.x = 4;
+guyvel.y = (willekeur.getRandom(11) - 5);
+aitel = 0;
+}
+if ((guypos.x + 5) > maxx) {ai = 4;}
+!!!133325.java!!!	AiThree() : void
+ if (aitel >= 2){
+guyvel.x = (willekeur.getRandom(7) - 2);
+guyvel.y = (willekeur.getRandom(11) - 5);
+aitel = 0;
+}
+if ((guypos.x + 5) > maxx) {ai = 4;}
+!!!133453.java!!!	AiFour() : void
+ if (aitel >= 10){
+guyvel.x = -2;
+guyvel.y = ((willekeur.getRandom(3) - 1)*5);
+aitel = 0;
+}
+!!!133581.java!!!	AiFive() : void
+if (aitel >= 10){
+guyvel.x = 0;
+guyvel.y = 0;
+aitel = 0;
+ai = 1;
+}	
+!!!133709.java!!!	calcMovement() : void
+	
+if (i > guyvel.all + 1 ) {
+if (guyvel.x > 0) {guyvel.x--; }
+if (guyvel.x < 0) {guyvel.x++; }
+if (guyvel.y > 0) {guyvel.y--; }
+if (guyvel.y < 0) {guyvel.y++; }
+i = 0;
+}
+
+
+
+if (guyvel.x < 0) {tempx = guyvel.x * -1;}
+else {tempx  = guyvel.x;}
+if (guyvel.y < 0) {tempy = guyvel.y * -1;}
+else {tempy = guyvel.y;}
+
+guyvel.all = (tempx  + tempy);
+
+if (guyvel.all > 0 )  {moving =  true;}
+else {moving = false;}
+
+guyvel.all = (guyvel.all/4);
+i++;
+
+
+!!!133837.java!!!	Turn() : void
+
+
+
+if (alive >= 0) {
+if (ai == 0) {AiZero();}
+else {
+if (ai == 1) {AiOne();}
+else {
+if (ai == 2) {AiTwo();}
+else {
+if (ai == 3) {AiThree();}
+else {
+if (ai == 4) {AiFour();}
+else {
+if (ai == 5) {AiFive();}
+}
+}
+}
+}
+}
+aitel++;
+}
+
+
+//System.out.println(updatetel);
+
+if (updatetel) {updatenodig++;}
+
+if (updatenodig >= 12) {
+	if (alive <= 0) {Regenerate();}
+	if (sawing) { sawing = false; }
+
+updatetel = false;	
+updatenodig = 0;
+
+}
+
+animatieKeuze();
+if (alive >= 1) {calcMovement();}
+MoveIt();
+!!!133965.java!!!	animatieKeuze() : void
+
+	
+	if (anderesequence) {
+	if((alive <= 0)&& (guyspr.getFrameSequenceLength() != doodsequence.length )) {
+		guyspr.setFrameSequence(doodsequence);
+	}
+	else {
+		if  (sawing)   {
+					guyspr.setFrameSequence(zaagsequence);
+				}
+			
+			  else {
+			if ((!moving) && (alive >= 0)) {guyspr.setFrameSequence(stasequence);}
+				
+			}
+	}
+	anderesequence = false;
+}
+
+if ((alive >= 0) && (moving) && (!sawing) && (guyspr.getFrameSequenceLength() != beweegsequence.length)) {guyspr.setFrameSequence(beweegsequence);}
+	
+
+
+!!!134093.java!!!	GetSprite() : Sprite
+    return this.guyspr;
+!!!134221.java!!!	Regenerate() : void
+ 
+
+ //set bij object score het leven min 1
+guypos.x = startx; //get width kan alleen in een canvas een paint etc.
+guypos.y = willekeur.getRandom(maxy);
+guyvel.x = 0;
+guyvel.y = 0;
+guyspr.setFrameSequence(stasequence);
+guyspr.setPosition(guypos.x, guypos.y);
+alive = beginleven;
+ai = willekeur.getRandom(4);
+updatetel = false;
+
+!!!134349.java!!!	MoveIt() : void
+
+
+guypos.x = guypos.x + guyvel.x;
+guypos.y = guypos.y + guyvel.y;
+
+if (guypos.x < minx) {guypos.x = guypos.x - guyvel.x;guyvel.x=0;}
+if (guypos.y < miny) {guypos.y = guypos.y - guyvel.y;guyvel.y=0;}
+if (guypos.x > maxx) {guypos.x = guypos.x - guyvel.x;guyvel.x=0;}
+if (guypos.y > maxy) {guypos.y = guypos.y - guyvel.y;guyvel.y=0;}
+
+guyspr.setPosition(guypos.x, guypos.y);
+
+guyspr.nextFrame();	
+

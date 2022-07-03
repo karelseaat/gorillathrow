@@ -1,0 +1,4 @@
+-libraryjars e:\WTK22\lib\mmapi.jar;e:\WTK22\lib\midpapi20.jar;e:\WTK22\lib\wma11.jar;e:\WTK22\lib\cldcapi10.jar
+-injars e:\WTK22\apps\Aats\bin\Aats.jar
+-outjar C:\DOCUME~1\aat\LOCALS~1\Temp\Aats.jar
+-keep public class * extends javax.microedition.midlet.MIDlet 

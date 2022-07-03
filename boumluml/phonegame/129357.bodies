@@ -1,0 +1,10 @@
+class RandomNumber
+!!!136141.java!!!	RandomNumber()
+  i = new Random();
+!!!136269.java!!!	getRandom(in n_max : int) : int
+  // Geeft een random waarde terug tussen 0 en n_max.
+  try {
+   Thread.sleep(1);
+  }
+  catch (InterruptedException e) {}
+  return  (( i.nextInt()/42949672 ) + 50 ) * n_max / 100;

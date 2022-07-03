@@ -1,0 +1,23 @@
+import javax.microedition.lcdui.*;
+import javax.microedition.lcdui.game.*;
+import java.io.*;
+
+ 
+ class MyCanvas extends GameCanvas{
+
+
+
+
+		
+
+public void paint(Graphics g) {
+		
+	g.setColor( 255, 255, 255 ); 
+	repaint();
+	}
+
+
+}
+		
+
+
