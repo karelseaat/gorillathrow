@@ -42,3 +42,7 @@ java -jar build/gorillathrow.jar
 - No external runtime dependencies
 - 800×600 minimum screen resolution (game window is fixed size)
 - Mouse and keyboard required for input
+
+## More from Karelseaat
+
+For more projects and experiments, visit my GitHub Pages site: [karelseaat.github.io](https://karelseaat.github.io/)
