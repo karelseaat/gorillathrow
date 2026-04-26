@@ -46,3 +46,15 @@ java -jar build/gorillathrow.jar
 ## More from Karelseaat
 
 For more projects and experiments, visit my GitHub Pages site: [karelseaat.github.io](https://karelseaat.github.io/)
+
+<!-- KEEP-EXPLORING-START -->
+## Keep Exploring
+
+If you made it to the bottom, jump straight into a few related repos:
+
+- [Nodeventure](https://github.com/karelseaat/nodeventure)
+- [Pygamepad](https://github.com/karelseaat/pygamepad)
+- [Socialpad](https://github.com/karelseaat/socialpad)
+
+- [Full project index](https://karelseaat.github.io/)
+<!-- KEEP-EXPLORING-END -->
